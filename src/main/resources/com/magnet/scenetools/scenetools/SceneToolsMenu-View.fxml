@@ -1,16 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.magnet.scenetools.scenetools.Controllers.SceneToolsController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.magnet.scenetools.scenetools.Controllers.SceneToolsController">
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
+            <Label text="🎬 SceneTools" style="-fx-font-size: 18px; -fx-text-fill: white;" />
+
+            <Region fx:id="topBarSpacer" HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="themeToggleButton" text="🌙" onAction="#onToggleTheme" style="-fx-background-color: transparent; -fx-font-size: 16px; -fx-text-fill: white;" />
+
+            <Button text="About" onAction="#onAboutClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
+
+            <Button text="Settings" onAction="#onSettingsClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
+
+            <Button text="Quit" onAction="#onQuitClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <HBox spacing="10">
+                <Label text="Title:" />
+                <TextField fx:id="titleField" promptText="e.g. Avatar.The.Way.of.Water" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Year:" />
+                <TextField fx:id="yearField" promptText="2022" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Resolution:" />
+                <ComboBox fx:id="resolutionBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="720p" />
+                            <String fx:value="1080p" />
+                            <String fx:value="2160p" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Codec:" />
+                <ComboBox fx:id="codecBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="x264" />
+                            <String fx:value="x265" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Audio:" />
+                <ComboBox fx:id="audioBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="AAC 2.0" />
+                            <String fx:value="DD+ 5.1" />
+                            <String fx:value="DTS 5.1" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Rip Type:" />
+                <ComboBox fx:id="ripTypeBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="WEB-DL" />
+                            <String fx:value="WEBRip" />
+                            <String fx:value="HDTV" />
+                            <String fx:value="DVDRip" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Group Name:" />
+                <TextField fx:id="groupField" promptText="SceneGroup" />
+            </HBox>
+
+            <Button text="Generate Scene Name" onAction="#onGenerateSceneName" />
+            <TextArea fx:id="outputArea" prefRowCount="3" wrapText="true" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <TitledPane text="Tools" expanded="false">
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button text="Normalize File Names" onAction="#onNormalizeFileNames" />
+                <Button text="Batch Rename" onAction="#onBatchRename" />
+                <Button text="Fetch Media Info" onAction="#onFetchMediaInfo" />
+            </VBox>
+        </TitledPane>
+    </bottom>
+
+</BorderPane>
