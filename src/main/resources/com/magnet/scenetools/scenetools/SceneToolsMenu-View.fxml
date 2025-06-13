@@ -102,7 +102,6 @@
                 <padding>
                     <Insets top="10" right="10" bottom="10" left="10"/>
                 </padding>
-                <Button text="Normalize File Names" onAction="#onNormalizeFileNames" />
                 <Button text="Batch Rename" onAction="#onBatchRename" />
                 <Button text="Fetch Media Info" onAction="#onFetchMediaInfo" />
             </VBox>
