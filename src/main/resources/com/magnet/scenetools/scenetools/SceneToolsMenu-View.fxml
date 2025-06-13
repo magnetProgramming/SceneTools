@@ -32,7 +32,7 @@
 
             <HBox spacing="10">
                 <Label text="Title:" />
-                <TextField fx:id="titleField" promptText="e.g. Avatar.The.Way.of.Water" />
+                <TextField fx:id="titleField" promptText="e.g. Plankton The Movie" />
             </HBox>
 
             <HBox spacing="10">

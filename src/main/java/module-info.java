@@ -2,6 +2,7 @@ module com.magnet.scenetools.scenetools {
     requires javafx.controls;
     requires javafx.fxml;
     requires atlantafx.base;
+    requires java.sql;
 
 
     opens com.magnet.scenetools.scenetools to javafx.fxml;
