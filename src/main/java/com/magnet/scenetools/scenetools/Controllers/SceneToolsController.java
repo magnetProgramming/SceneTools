@@ -29,20 +29,7 @@ public class SceneToolsController implements Initializable {
     @FXML
     public Button themeToggleButton;
 
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
     public void onGenerateSceneName(ActionEvent actionEvent)
-    {
-
-    }
-
-    public void onNormalizeFileNames(ActionEvent actionEvent)
     {
 
     }
