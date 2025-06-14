@@ -29,6 +29,8 @@ public class SceneToolsController implements Initializable {
     @FXML
     public Button themeToggleButton;
 
+    private String selectedFileName = "Loading file name";
+
     public void onGenerateSceneName(ActionEvent actionEvent)
     {
 
@@ -62,9 +64,11 @@ public class SceneToolsController implements Initializable {
 
                     MediaInfoController controller = loader.getController();
                     controller.mediaInfoTextArea.setText(mediaInfo);
+                    selectedFileName = selectedMediaFile.getName();
+                    controller.mediaInfoHeader.setText(selectedFileName);
 
                     Stage mediaInfoDisplayStage = new Stage();
-                    mediaInfoDisplayStage.setTitle("Media Information");
+                    mediaInfoDisplayStage.setTitle(STR."\{selectedMediaFile.getName()} Information");
                     mediaInfoDisplayStage.setScene(new Scene(root, 900, 900));
                     mediaInfoDisplayStage.show();
 
