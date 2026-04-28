@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.magnet.scenetools.scenetools.Controllers.SceneToolsController">
 
@@ -12,37 +12,45 @@
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
             <Label text="🎬 SceneTools" style="-fx-font-size: 18px; -fx-text-fill: white;" />
 
-            <Region fx:id="topBarSpacer" HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS"/>
 
             <Button fx:id="themeToggleButton" text="🌙" onAction="#onToggleTheme" style="-fx-background-color: transparent; -fx-font-size: 16px; -fx-text-fill: white;" />
-
             <Button text="About" onAction="#onAboutClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
-
-            <Button text="Settings" onAction="#onSettingsClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
-
             <Button text="Quit" onAction="#onQuitClicked" style="-fx-background-color: #34495E; -fx-text-fill: white;" />
         </HBox>
     </top>
 
     <center>
-        <VBox spacing="10">
+        <VBox spacing="12">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets top="12" right="12" bottom="12" left="12"/>
             </padding>
 
-            <HBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Content Type:" />
+                <ComboBox fx:id="contentTypeBox" prefWidth="150" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Title:" />
-                <TextField fx:id="titleField" promptText="e.g. Plankton The Movie" />
+                <TextField fx:id="titleField" promptText="e.g. Win or Lose" HBox.hgrow="ALWAYS" />
             </HBox>
 
-            <HBox spacing="10">
+            <HBox fx:id="yearRow" spacing="10" alignment="CENTER_LEFT">
                 <Label text="Year:" />
-                <TextField fx:id="yearField" promptText="2025" />
+                <TextField fx:id="yearField" promptText="2025" prefWidth="120" />
             </HBox>
 
-            <HBox spacing="10">
+            <HBox fx:id="seasonEpisodeRow" spacing="10" alignment="CENTER_LEFT">
+                <Label text="Season:" />
+                <TextField fx:id="seasonField" promptText="1" prefWidth="80" />
+                <Label text="Start Episode:" />
+                <TextField fx:id="startEpisodeField" promptText="1" prefWidth="100" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Resolution:" />
-                <ComboBox fx:id="resolutionBox">
+                <ComboBox fx:id="resolutionBox" prefWidth="120">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="720p" />
@@ -52,29 +60,13 @@
                     </items>
                 </ComboBox>
 
-                <Label text="Codec:" />
-                <ComboBox fx:id="codecBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="x264" />
-                            <String fx:value="x265" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
+                <Label text="Streaming Service:" />
+                <TextField fx:id="streamingServiceField" promptText="Optional, e.g. DSNP" prefWidth="180" />
+            </HBox>
 
-                <Label text="Audio:" />
-                <ComboBox fx:id="audioBox">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="AAC 2.0" />
-                            <String fx:value="DD+ 5.1" />
-                            <String fx:value="DTS 5.1" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-
+            <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Rip Type:" />
-                <ComboBox fx:id="ripTypeBox">
+                <ComboBox fx:id="ripTypeBox" prefWidth="140">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="WEB-DL" />
@@ -84,28 +76,56 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
+
+                <Label text="Audio:" />
+                <ComboBox fx:id="audioBox" prefWidth="140">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="AAC 2.0" />
+                            <String fx:value="DD+ 5.1" />
+                            <String fx:value="DTS 5.1" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Codec:" />
+                <ComboBox fx:id="codecBox" prefWidth="120">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="x264" />
+                            <String fx:value="x265" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
             </HBox>
 
-            <HBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Group Name:" />
-                <TextField fx:id="groupField" promptText="SceneGroup" />
+                <TextField fx:id="groupField" promptText="ETHERES" HBox.hgrow="ALWAYS" />
             </HBox>
 
-            <Button text="Generate Scene Name" onAction="#onGenerateSceneName" />
-            <TextArea fx:id="outputArea" prefRowCount="3" wrapText="true" />
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Generate Scene Name" onAction="#onGenerateSceneName" />
+                <Button fx:id="batchRenameButton" text="Batch Rename" onAction="#onBatchRename" />
+                <Button fx:id="fetchMediaInfoButton" text="Fetch Media Info" onAction="#onFetchMediaInfo" />
+            </HBox>
+
+            <HBox fx:id="openDirectoryRow" spacing="10" alignment="CENTER_LEFT">
+                <CheckBox fx:id="openDirectoryAfterRenameCheckBox" text="Open output directory after batch rename" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ProgressBar fx:id="taskProgressBar" prefWidth="260" progress="0.0" />
+                <Label fx:id="progressLabel" text="" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Output:" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="clearOutputButton" text="Clear Output" onAction="#onClearOutput" />
+            </HBox>
+
+            <TextArea fx:id="outputArea" prefRowCount="4" wrapText="true" />
         </VBox>
     </center>
-
-    <bottom>
-        <TitledPane text="Tools" expanded="false">
-            <VBox spacing="10">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10"/>
-                </padding>
-                <Button text="Batch Rename" onAction="#onBatchRename" />
-                <Button text="Fetch Media Info" onAction="#onFetchMediaInfo" />
-            </VBox>
-        </TitledPane>
-    </bottom>
-
 </BorderPane>

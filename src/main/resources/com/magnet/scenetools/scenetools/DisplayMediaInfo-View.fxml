@@ -10,7 +10,24 @@
     </top>
 
     <center>
-        <TextArea fx:id="mediaInfoTextArea" editable="false" wrapText="true" style="-fx-font-family: monospace; -fx-font-size: 12px; -fx-padding: 10;" />
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Clean View">
+                    <content>
+                        <ScrollPane fitToWidth="true">
+                            <content>
+                                <VBox fx:id="cleanInfoContainer" spacing="12" style="-fx-padding: 16;" fillWidth="true" />
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+                <Tab text="Raw Output">
+                    <content>
+                        <TextArea fx:id="mediaInfoTextArea" editable="false" wrapText="true" style="-fx-font-family: monospace; -fx-font-size: 12px; -fx-padding: 10;" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </center>
 
     <bottom>
