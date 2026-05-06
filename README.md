@@ -8,7 +8,7 @@ Features:
 - Ability to generate scene name's.
 - Work's with both Movies & Shows (Episode and season numbers supported)
 
-- Images are outdated old build.
+Images are from outdated old build.
 
 ![Screenshot 2025-06-13 163647](https://github.com/user-attachments/assets/624617c2-779b-4ce4-8d06-3113cd0059ea)
 ![Screenshot 2025-06-13 163711](https://github.com/user-attachments/assets/3efac48e-320a-4294-b47f-6dad1f3dec20)
